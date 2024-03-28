@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+
+
+<div class="d-flex justify-content-center mt-4">
+    <div class="col-6 card p-4 bg-dark border-danger">
+        <h3 class="text-center text-light">{{ title }}</h3>
+        <form action="" method="post" enctype="multipart/form-data" class="text-light">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{% url 'profile' request.user.pk %}" class="btn btn-success">Back</a>
+
+                <button type="submit" class="btn btn-secondary">
+                    Edit
+                </button>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock main %}
+
+
+
+
+

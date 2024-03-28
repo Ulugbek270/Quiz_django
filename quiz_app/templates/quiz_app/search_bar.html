@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+<div class="cont_dict">
+
+
+    <div class="search-container">
+        <form action="{% url 'word' %}" method="get">
+            <input type="text" name="search" class="search-input" placeholder="Type your search...">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock main %}
+

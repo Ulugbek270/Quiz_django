@@ -1,0 +1,249 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block title %}
+{{title}}
+{% endblock title%}
+
+
+{% block main %}
+<link rel="stylesheet" href="{% static 'quiz_app/css/style.css' %}">
+
+<div class="container">
+
+    <div class="et_pb_section et_pb_section_2 et_section_regular">
+        <div class="et_pb_row et_pb_row_3">
+            <div class="et_pb_column et_pb_column_4_4 et_pb_column_6  et_pb_css_mix_blend_mode_passthrough et-last-child">
+                <div class="et_pb_module et_pb_text et_pb_text_4  et_pb_text_align_left et_pb_bg_layout_light">
+                    <div class="et_pb_text_inner"><h2>English Level Test</h2></div>
+                </div>
+                <div class="et_pb_module et_pb_text et_pb_text_5  et_pb_text_align_left et_pb_bg_layout_light">
+                    <div class="et_pb_text_inner"><p>This practical English test measures how you use English, apply
+                        grammar rules, and have a good English vocabulary. You will evaluate your English skills and
+                        give an English score out of 100, and at the end you will find out your English level
+                        immediately and you will receive your English certificate immediately.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="et_pb_row et_pb_row_4">
+            <div class="et_pb_column et_pb_column_1_2 et_pb_column_7  et_pb_css_mix_blend_mode_passthrough">
+                <div class="et_pb_module et_pb_text et_pb_text_6  et_pb_text_align_left et_pb_bg_layout_light">
+                    <div class="et_pb_text_inner"><p><strong><span>English Levels</span></strong></p>
+                        <ul>
+                            <li><span>A1&nbsp;– Beginner</span></li>
+                            <li><span>A2 – Elementary</span></li>
+                            <li><span>B1 – Intermediate</span></li>
+                            <li><span>B2 – Upper-Intermediate</span></li>
+                            <li><span>C1 – Advanced</span></li>
+                            <li><span>C2 – Proficient</span></li>
+                        </ul>
+                    </div>
+                </div>
+                {% if request.user.is_authenticated %}
+
+                {% for category in categories%}
+                {% if category.title == 'English' %}
+                <form action="{% url 'category' category.pk %}" method="post">
+                    {% csrf_token %}
+                    <div class="button-test">
+                        <button class="button-35" type="submit" role="button">Test your English</button>
+                    </div>
+                </form>
+                {% endif %}
+                {% endfor%}
+
+                {%else%}
+                <div class="button-test">
+                    <button class="button-35" type="submit" role="button"><a class="nav-link " href="#"
+                                                                             onclick="alert('You must log in first.');">Test
+                        your English</a></button>
+                </div>
+
+                {%endif%}
+
+
+            </div>
+            <br>
+            <div class="et_pb_column et_pb_column_1_2 et_pb_column_8  et_pb_css_mix_blend_mode_passthrough et-last-child">
+                <div class="et_pb_module et_pb_image et_pb_image_1">
+                    <span class="et_pb_image_wrap "><img decoding="async" width="500" height="330"
+                                                         src="https://internationalenglishtest.com/wp-content/uploads/2023/08/english-CEFR-levels-2-_1_.webp"
+                                                         alt="" title="english-CEFR-levels-2-_1_"
+                                                         data-lazy-srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/english-CEFR-levels-2-_1_.webp 500w, https://internationalenglishtest.com/wp-content/uploads/2023/08/english-CEFR-levels-2-_1_-480x317.webp 480w"
+                                                         data-lazy-sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 500px, 100vw"
+                                                         class="wp-image-4308 entered lazyloaded"
+                                                         data-lazy-src="https://internationalenglishtest.com/wp-content/uploads/2023/08/english-CEFR-levels-2-_1_.webp"
+                                                         data-ll-status="loaded"
+                                                         sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 500px, 100vw"
+                                                         srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/english-CEFR-levels-2-_1_.webp 500w, https://internationalenglishtest.com/wp-content/uploads/2023/08/english-CEFR-levels-2-_1_-480x317.webp 480w"><noscript><img
+                            decoding="async" width="500" height="330"
+                            src="https://internationalenglishtest.com/wp-content/uploads/2023/08/english-CEFR-levels-2-_1_.webp"
+                            alt="" title="english-CEFR-levels-2-_1_"
+                            srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/english-CEFR-levels-2-_1_.webp 500w, https://internationalenglishtest.com/wp-content/uploads/2023/08/english-CEFR-levels-2-_1_-480x317.webp 480w"
+                            sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 500px, 100vw"
+                            class="wp-image-4308"/></noscript></span>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="et_pb_row et_pb_row_5">
+            <div class="et_pb_column et_pb_column_1_3 et_pb_column_9  et_pb_css_mix_blend_mode_passthrough">
+                <div class="et_pb_module et_pb_image et_pb_image_2">
+                    <span class="et_pb_image_wrap "><img decoding="async" width="200" height="200"
+                                                         src="https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_.webp"
+                                                         alt="" title="a1-beginner-1-_1_"
+                                                         data-lazy-srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_-100x100.webp 100w"
+                                                         data-lazy-sizes="(max-width: 200px) 100vw, 200px"
+                                                         class="wp-image-4309 entered lazyloaded"
+                                                         data-lazy-src="https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_.webp"
+                                                         data-ll-status="loaded" sizes="(max-width: 200px) 100vw, 200px"
+                                                         srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_-100x100.webp 100w"><noscript><img
+                            decoding="async" width="200" height="200"
+                            src="https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_.webp"
+                            alt="" title="a1-beginner-1-_1_"
+                            srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a1-beginner-1-_1_-100x100.webp 100w"
+                            sizes="(max-width: 200px) 100vw, 200px" class="wp-image-4309"/></noscript></span>
+                </div>
+                <div class="et_pb_module et_pb_text et_pb_text_7  et_pb_text_align_left et_pb_bg_layout_light">
+                    <div class="et_pb_text_inner"><h3>A1 – Beginner Level</h3>
+                        <p><span>English level A1 is the first level of English in the&nbsp;Common European Framework of Reference (CEFR), a definition of different language levels written by the Council of Europe. In everyday speech, this level would be called “beginner”, and indeed, that is the official level descriptor in the CEFR. In practice it is possible to be at a pre-A1 level of English. A student who is just beginning to learn English, or who has no prior knowledge of English, is at a pre-A1 level.</span>
+                        </p></div>
+                </div>
+            </div>
+            <div class="et_pb_column et_pb_column_1_3 et_pb_column_10  et_pb_css_mix_blend_mode_passthrough">
+                <div class="et_pb_module et_pb_image et_pb_image_3">
+                    <span class="et_pb_image_wrap "><img decoding="async" width="200" height="200"
+                                                         src="https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1.webp"
+                                                         alt="" title="a2-elemantary-level (1) (1)"
+                                                         data-lazy-srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1-100x100.webp 100w"
+                                                         data-lazy-sizes="(max-width: 200px) 100vw, 200px"
+                                                         class="wp-image-4310 entered lazyloaded"
+                                                         data-lazy-src="https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1.webp"
+                                                         data-ll-status="loaded" sizes="(max-width: 200px) 100vw, 200px"
+                                                         srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1-100x100.webp 100w"><noscript><img
+                            decoding="async" width="200" height="200"
+                            src="https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1.webp"
+                            alt="" title="a2-elemantary-level (1) (1)"
+                            srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/a2-elemantary-level-1-1-100x100.webp 100w"
+                            sizes="(max-width: 200px) 100vw, 200px" class="wp-image-4310"/></noscript></span>
+                </div>
+                <div class="et_pb_module et_pb_text et_pb_text_8  et_pb_text_align_left et_pb_bg_layout_light">
+                    <div class="et_pb_text_inner"><h3>A2 – Elementary Level</h3>
+                        <p>English level A2 is the second level of English in the&nbsp;Common European Framework of
+                            Reference (CEFR), a definition of different language levels written by the Council of
+                            Europe. In everyday speech, this level might be described as “basic” as in “I speak basic
+                            English”. The official level descriptor in the CEFR is “elementary”, which means the same
+                            thing: it is the foundation. At this level, students have mastered the basics of English and
+                            can communicate simple, basic needs.</p></div>
+                </div>
+            </div>
+            <div class="et_pb_column et_pb_column_1_3 et_pb_column_11  et_pb_css_mix_blend_mode_passthrough et-last-child">
+                <div class="et_pb_module et_pb_image et_pb_image_4">
+                    <span class="et_pb_image_wrap "><img decoding="async" width="200" height="200"
+                                                         src="https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1.webp"
+                                                         alt="" title="b1-intermediate-level (1)"
+                                                         data-lazy-srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1-100x100.webp 100w"
+                                                         data-lazy-sizes="(max-width: 200px) 100vw, 200px"
+                                                         class="wp-image-4312 entered lazyloaded"
+                                                         data-lazy-src="https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1.webp"
+                                                         data-ll-status="loaded" sizes="(max-width: 200px) 100vw, 200px"
+                                                         srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1-100x100.webp 100w"><noscript><img
+                            decoding="async" width="200" height="200"
+                            src="https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1.webp"
+                            alt="" title="b1-intermediate-level (1)"
+                            srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/b1-intermediate-level-1-100x100.webp 100w"
+                            sizes="(max-width: 200px) 100vw, 200px" class="wp-image-4312"/></noscript></span>
+                </div>
+                <div class="et_pb_module et_pb_text et_pb_text_9  et_pb_text_align_left et_pb_bg_layout_light">
+                    <div class="et_pb_text_inner"><h3>B1 – Intermediate Level</h3>
+                        <p><span>English level B1 is the third level of English in the&nbsp;Common European Framework of Reference (CEFR), a definition of different language levels written by the Council of Europe. In everyday speech, this level would be called “intermediate”, and indeed, that is the official level descriptor in the CEFR. At this level, students are beyond the basics but they are still not able to work or study exclusively in English.</span>
+                        </p></div>
+                </div>
+            </div>
+        </div>
+        <div class="et_pb_row et_pb_row_6">
+            <div class="et_pb_column et_pb_column_1_3 et_pb_column_12  et_pb_css_mix_blend_mode_passthrough">
+                <div class="et_pb_module et_pb_image et_pb_image_5">
+                    <span class="et_pb_image_wrap "><img decoding="async" width="200" height="200"
+                                                         src="https://internationalenglishtest.com/wp-content/uploads/2023/08/b2-upper-intermediate-level-1.webp"
+                                                         alt="" title="b2-upper-intermediate-level (1)"
+                                                         data-lazy-srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/b2-upper-intermediate-level-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/b2-upper-intermediate-level-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/b2-upper-intermediate-level-1-100x100.webp 100w"
+                                                         data-lazy-sizes="(max-width: 200px) 100vw, 200px"
+                                                         class="wp-image-4313"
+                                                         data-lazy-src="https://internationalenglishtest.com/wp-content/uploads/2023/08/b2-upper-intermediate-level-1.webp"><noscript><img
+                            decoding="async" width="200" height="200"
+                            src="https://internationalenglishtest.com/wp-content/uploads/2023/08/b2-upper-intermediate-level-1.webp"
+                            alt="" title="b2-upper-intermediate-level (1)"
+                            srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/b2-upper-intermediate-level-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/b2-upper-intermediate-level-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/b2-upper-intermediate-level-1-100x100.webp 100w"
+                            sizes="(max-width: 200px) 100vw, 200px" class="wp-image-4313"/></noscript></span>
+                </div>
+                <div class="et_pb_module et_pb_text et_pb_text_10  et_pb_text_align_left et_pb_bg_layout_light">
+                    <div class="et_pb_text_inner"><h3>B2 – Upper-Intermediate Level</h3>
+                        <p>English level B2 is the fourth level of English in the&nbsp;Common European Framework of
+                            Reference (CEFR), a definition of different language levels written by the Council of
+                            Europe. In everyday speech, this level might be called “confident”, as in “I am a confident
+                            English speaker”. The official level descriptor is “upper intermediate”. At this level,
+                            students can function independently in a variety of academic and professional environments
+                            in English, although with a limited range of nuance and precision.</p></div>
+                </div>
+            </div>
+            <div class="et_pb_column et_pb_column_1_3 et_pb_column_13  et_pb_css_mix_blend_mode_passthrough">
+                <div class="et_pb_module et_pb_image et_pb_image_6">
+                    <span class="et_pb_image_wrap "><img decoding="async" width="200" height="200"
+                                                         src="https://internationalenglishtest.com/wp-content/uploads/2023/08/c1-advanced-level-1-1.webp"
+                                                         alt="" title="c1-advanced-level-1 (1)"
+                                                         data-lazy-srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/c1-advanced-level-1-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/c1-advanced-level-1-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/c1-advanced-level-1-1-100x100.webp 100w"
+                                                         data-lazy-sizes="(max-width: 200px) 100vw, 200px"
+                                                         class="wp-image-4314"
+                                                         data-lazy-src="https://internationalenglishtest.com/wp-content/uploads/2023/08/c1-advanced-level-1-1.webp"><noscript><img
+                            decoding="async" width="200" height="200"
+                            src="https://internationalenglishtest.com/wp-content/uploads/2023/08/c1-advanced-level-1-1.webp"
+                            alt="" title="c1-advanced-level-1 (1)"
+                            srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/c1-advanced-level-1-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/c1-advanced-level-1-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/c1-advanced-level-1-1-100x100.webp 100w"
+                            sizes="(max-width: 200px) 100vw, 200px" class="wp-image-4314"/></noscript></span>
+                </div>
+                <div class="et_pb_module et_pb_text et_pb_text_11  et_pb_text_align_left et_pb_bg_layout_light">
+                    <div class="et_pb_text_inner"><h3>C1 – Advanced Level</h3>
+                        <p>English level C1 is the fifth level of English in the&nbsp;Common European Framework of
+                            Reference (CEFR), a definition of different language levels written by the Council of
+                            Europe. In everyday speech, this level might be called “advanced”, and that is the official
+                            level descriptor for this level. At this level, students can function independently and with
+                            a great deal of precision on a wide variety of subjects and in almost any setting without
+                            any prior preparation.</p></div>
+                </div>
+            </div>
+            <div class="et_pb_column et_pb_column_1_3 et_pb_column_14  et_pb_css_mix_blend_mode_passthrough et-last-child">
+                <div class="et_pb_module et_pb_image et_pb_image_7">
+                    <span class="et_pb_image_wrap "><img decoding="async" width="200" height="200"
+                                                         src="https://internationalenglishtest.com/wp-content/uploads/2023/08/c2-proficient-level-1-1.webp"
+                                                         alt="" title="c2-proficient-level-1 (1)"
+                                                         data-lazy-srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/c2-proficient-level-1-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/c2-proficient-level-1-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/c2-proficient-level-1-1-100x100.webp 100w"
+                                                         data-lazy-sizes="(max-width: 200px) 100vw, 200px"
+                                                         class="wp-image-4315"
+                                                         data-lazy-src="https://internationalenglishtest.com/wp-content/uploads/2023/08/c2-proficient-level-1-1.webp"><noscript><img
+                            decoding="async" width="200" height="200"
+                            src="https://internationalenglishtest.com/wp-content/uploads/2023/08/c2-proficient-level-1-1.webp"
+                            alt="" title="c2-proficient-level-1 (1)"
+                            srcset="https://internationalenglishtest.com/wp-content/uploads/2023/08/c2-proficient-level-1-1.webp 200w, https://internationalenglishtest.com/wp-content/uploads/2023/08/c2-proficient-level-1-1-150x150.webp 150w, https://internationalenglishtest.com/wp-content/uploads/2023/08/c2-proficient-level-1-1-100x100.webp 100w"
+                            sizes="(max-width: 200px) 100vw, 200px" class="wp-image-4315"/></noscript></span>
+                </div>
+                <div class="et_pb_module et_pb_text et_pb_text_12  et_pb_text_align_left et_pb_bg_layout_light">
+                    <div class="et_pb_text_inner"><h3>C2 – Proficient Level</h3>
+                        <p>English level C2 is the sixth and final level of English in the&nbsp;Common European
+                            Framework of Reference (CEFR), a definition of different language levels written by the
+                            Council of Europe. In everyday speech, this level might be called “bilingual”, as in “I am
+                            bilingual in English and French.” A well-educated native English speaker is technically at a
+                            C2 level. Relatively few English learners reach this level because their professional or
+                            academic goals do not require it.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}
+
+

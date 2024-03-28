@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block main %}
+<style>
+    .quiz-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .question {
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .question p {
+        margin-bottom: 5px;
+    }
+
+    .choices-container {
+        margin-left: 20px;
+    }
+
+    .choice {
+        margin-bottom: 5px;
+    }
+
+    .button-test {
+        margin-top: 20px;
+    }
+
+
+
+</style>
+
+<div class="quiz-container text-dark">
+    <form action="{% url 'quiz_results'%}" method="post">
+        {% csrf_token %}
+
+        {% for question in questions %}
+        <div class="question">
+            <p>{{ forloop.counter }}. {{ question.question }}</p>
+
+            <div class="choices-container">
+                {% for choice in choices %}
+                {% if choice.question_id == question.id %}
+                <div class="choice">
+                    <input type="radio" id="choice{{ choice.id }}" name="question{{ question.id }}"
+                           value="{{ choice.id }}">
+                    <label for="choice{{ choice.id }}">{{ choice.choice }}</label>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        <hr>
+        <div class="button-test">
+            <button class="button-35" type="submit">Submit</button>
+
+                <a href="{% url 'index' %}" class="btn btn-danger ms-4">Back</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

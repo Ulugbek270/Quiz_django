@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block main %}
+<link rel="stylesheet" href="{% static 'quiz_app/css/style.css' %}">
+
+<style>
+    .res {
+        display: flex;
+
+        align-items: center; /* Updated to center items vertically */
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #f8f9fa;
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        margin-bottom:0;
+    }
+
+    .main_res {
+
+        display: flex;
+        flex-direction: column; /* Updated to column layout */
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .text {
+        text-align: center; /* Align text to the center */
+        margin-top: 20px; /* Added some margin between images and text */
+    }
+
+    .text p {
+        margin: 10px 0;
+    }
+
+    .img_rank img {
+
+
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        height: 100%; /* Increased image height */
+        width: 100%; /* Increased image width */
+        margin-bottom: 10px; /* Added margin between images */
+    }
+
+
+
+</style>
+
+<div class="res">
+    <div class="main_res">
+        <div class="img_rank">
+            {% if percent_correct >= 0 and percent_correct <= 59 %}
+            <img src="{% static 'quiz_app/images/a1.png' %}" alt="Noobie">
+
+            {% elif percent_correct >= 60 and percent_correct <= 79 %}
+            <img src="{% static 'quiz_app/images/a2.png' %}" alt="Mid">
+            {% elif percent_correct >= 80 and percent_correct <= 100 %}
+            <img src="{% static 'quiz_app/images/b1.png' %}" alt="Amazing">
+
+            {% else %}
+            <p>what the heck</p>
+            {% endif %}
+        </div>
+
+        <div class="text">
+            <h3>Results: </h3>
+
+            <h4>Your Grade: {{ percent_correct }}%</h4>
+            <p><b>Your Score: {{ out_of }}</b></p>
+
+            <!--            {% if percent_correct >= 0 and percent_correct <= 29 %}-->
+            <!--                <p>Horrible</p>-->
+            <!--            {% elif percent_correct >= 30 and percent_correct <= 74 %}-->
+            <!--                <p>Mid</p>-->
+            <!--            {% elif percent_correct >= 75 and percent_correct <= 99 %}-->
+            <!--                <p>Amazing</p>-->
+            <!--            {% elif percent_correct == 100 %}-->
+            <!--                <p>Goat</p>-->
+            <!--            {% else %}-->
+            <!--                <p>Nothing</p>-->
+            <!--            {% endif %}-->
+        </div>
+
+
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{% url 'index' %}" class="btn btn-secondary">Go to homepage</a>
+            <a href="{% url 'index' %}" class="btn btn-danger">Retake</a>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}
